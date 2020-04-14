@@ -20,19 +20,20 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Cache dependencies
-      id: cache-node_modules
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node_modules
-
     - name: Configuring Git
       run: git config --global user.email "nobody@github.com" && git config --global user.name "Github Actions"
 
     - name: Preparing 
       run: git remote update && git fetch && git checkout master && git pull origin master && ls -pA | grep -v .git/ | xargs rm -rf && touch init && git add -A && git commit -m "Cleaning" && rm init && git add -A && git commit -m "Cleaning OK" && git push origin master && git checkout src && ls -la
 
+
+    - name: Cache dependencies
+      id: cache-node_modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node_modules
+    
     - name: Download dependencies
       run: npm install
 
