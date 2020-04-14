@@ -19,9 +19,24 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: git checkout master ; git pull ; ls -pA | grep -v .git/ | xargs rm -rf
-    - run: git config --global user.email "nobody@github.com" && git config --global user.name "Github Actions"
-    - run: npm run dist
+
+    - name: Cache dependencies
+      id: cache-node_modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node_modules
+
+    - name: Download dependencies
+      run: npm install
+
+    - name: Configuring Git
+      run: git config --global user.email "nobody@github.com" && git config --global user.name "Github Actions"
+
+    - name: Preparing 
+      run: git remote update ; git fetch ; git checkout master ; git pull ; ls -pA | grep -v .git/ | xargs rm -rf
+
+    - name: Deploying
+      run: npm run dist
       env:
         CI: true
