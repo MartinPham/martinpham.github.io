@@ -4,8 +4,8 @@ import ReactDOM from "react-dom";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <div>
+  <h1>
     Ops!!!
-  </div>,
+  </h1>,
   rootElement
 )
