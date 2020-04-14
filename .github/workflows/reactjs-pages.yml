@@ -34,7 +34,7 @@ jobs:
       run: git config --global user.email "nobody@github.com" && git config --global user.name "Github Actions"
 
     - name: Preparing 
-      run: git remote update ; git fetch ; git checkout master ; git pull ; ls -pA | grep -v .git/ | xargs rm -rf
+      run: git remote update ; git fetch ; git checkout master ; git pull ; ls -pA | grep -v .git/ | xargs rm -rf ; git checkout src
 
     - name: Deploying
       run: npm run dist
