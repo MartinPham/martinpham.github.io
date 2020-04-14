@@ -42,9 +42,12 @@ jobs:
         key: ${{ runner.os }}-yarn
     
     - name: Download dependencies
-      run: ls -la ; yarn install --prefer-offline --pure-lockfile --cache-folder .yarn --modules-folder node_modules ; ls -la
+      run: ls -la ; yarn install --prefer-offline --pure-lockfile --cache-folder .yarn --modules-folder node_modules ; mv .yarn node_modules/.yarn ; ls -la
 
     - name: Deploying
       run: yarn dist
       env:
         CI: true
+      
+    - name: Preparing yarn cache
+      run: mv node_modules/.yarn .yarn
