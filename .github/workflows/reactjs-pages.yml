@@ -27,14 +27,14 @@ jobs:
         path: node_modules
         key: ${{ runner.os }}-node_modules
 
-    - name: Download dependencies
-      run: npm install
-
     - name: Configuring Git
       run: git config --global user.email "nobody@github.com" && git config --global user.name "Github Actions"
 
     - name: Preparing 
-      run: git remote update ; git fetch ; git checkout master ; git pull ; ls -pA | grep -v .git/ | xargs rm -rf ; git checkout src
+      run: git remote update ; git fetch ; git checkout master ; git pull ; ls -pA | grep -v .git/ | xargs rm -rf ; git add -A ; git commit -m "Cleaning" ; git checkout src
+
+    - name: Download dependencies
+      run: npm install
 
     - name: Deploying
       run: npm run dist
