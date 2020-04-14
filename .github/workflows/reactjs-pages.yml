@@ -23,6 +23,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: git config --global user.email "nobody@github.com" && git config --global user.name "Github Actions"
+    - run: mv package.json package && rm -rf static *.js *.json index.html && mv package package.json 
     - run: npm run build
     - run: \cp -rv build/* .
     - run: git add -A && git commit -m "Deloyment" && git push origin master
