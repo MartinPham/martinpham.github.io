@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dist": "publisher-prepare --source=src --destination=master && npm run build && publisher --build=build --source=src --destination=master",
+    "dist": "publisher-prepare --source=src --destination=master && npm run build && publisher --build=build --source=src --destination=master"
   },
   "browserslist": [
     ">0.2%",
