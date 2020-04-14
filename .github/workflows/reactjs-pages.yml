@@ -33,11 +33,18 @@ jobs:
       with:
         path: node_modules
         key: ${{ runner.os }}-node_modules
+
+    - name: Cache yarn
+      id: cache-yarn
+      uses: actions/cache@v1
+      with:
+        path: .yarn
+        key: ${{ runner.os }}-yarn
     
     - name: Download dependencies
-      run: ls -la ; npm install
+      run: ls -la ; yarn install --prefer-offline --pure-lockfile --cache-folder .yarn --modules-folder node_modules
 
     - name: Deploying
-      run: npm run dist
+      run: yarn dist
       env:
         CI: true
