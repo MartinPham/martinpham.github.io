@@ -35,7 +35,7 @@ jobs:
         key: ${{ runner.os }}-node_modules
     
     - name: Download dependencies
-      run: npm install
+      run: ls -la ; npm install
 
     - name: Deploying
       run: npm run dist
