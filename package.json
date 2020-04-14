@@ -7,8 +7,7 @@
   "dependencies": {
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "react-scripts": "3.0.1",
-    "@martinpham/publisher": "^1.0"
+    "react-scripts": "3.0.1"
   },
   "devDependencies": {
     "typescript": "3.8.3"
@@ -16,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dist": "publisher-prepare --destination=gh-pages && npm run build && mv build dist && publisher --destination=gh-pages",
+    "dist": "npm run build && \cp -rv build/* .",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
