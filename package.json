@@ -11,6 +11,9 @@
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-scripts": "3.0.1",
+    "nice-color-palettes": "3.0.0",
+    "react-three-fiber": "4.0.23",
+    "three": "0.115.0",
     "@martinpham/publisher": "^1.0"
   },
   "devDependencies": {
